@@ -33,8 +33,20 @@ class hykwGVC
     return $defaultValue;
   }
 
+  ### for debug
+  public function dump()
+  {
+    echo "<pre>\n";
+    foreach ($this->container as $key => $value) {
+      echo sprintf("***KEY:[%s]\n***VALUE:%s\n",
+	  $key, esc_html($value));
+	  
+      echo "<hr>\n";
+    }
+    echo "</pre>\n";
 
-
+    exit;
+  }
 }
 
 ####################
