@@ -8,8 +8,7 @@
   Plugin URI: https://github.com/hykw/hykw-wp-globals-container
   Description: カスタマイズ項目など$GLOBALSで持ちまわる値を一元管理するクラス
   Author: hitoshi-hayakawa
-  Version: 1.0.0
-*/
+ */
 
 class hykwGVC
 {
@@ -19,12 +18,25 @@ class hykwGVC
   {
     $this->container = array();
   }
-  
+
+  /**
+   * set set the value into the global variable
+   * 
+   * @param string $key key
+   * @param mixed $value value 
+   */
   public function set($key, $value)
   {
     $this->container[$key] = $value;
   }
 
+  /**
+   * get get the value from the global variable
+   * 
+   * @param string $key key
+   * @param string $defaultValue if the key is invalid it just returns this value
+   * @return mixed value
+   */
   public function get($key, $defaultValue = '')
   {
     if (isset($this->container[$key]))
@@ -39,8 +51,8 @@ class hykwGVC
     echo "<pre>\n";
     foreach ($this->container as $key => $value) {
       echo sprintf("***KEY:[%s]\n***VALUE:%s\n",
-	  $key, esc_html($value));
-	  
+        $key, esc_html($value));
+
       echo "<hr>\n";
     }
     echo "</pre>\n";
@@ -55,8 +67,3 @@ class hykwGVC
 
 define('HYKWGVC', 'gHYKWgvc');
 $gHYKWgvc = new hykwGVC();
-
-/*
-  Usage:
-    $GLOBALS[HYKWGVC]->set('key', 'value');
-*/
